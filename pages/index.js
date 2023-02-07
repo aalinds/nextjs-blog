@@ -13,7 +13,9 @@ function Home({ posts }) {
         <p>hello I am Aalind a NextJS developer. You can contact me on my Twitter.</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <Link href={'/posts'}>
+          <h2 className={utilStyles.headingLg}>Blogs</h2>
+        </Link>
         <ul className={utilStyles.list}>
           {posts.map(({ id, title, body }) => (
             <Link href={`/posts/${id}`} key={id}>
