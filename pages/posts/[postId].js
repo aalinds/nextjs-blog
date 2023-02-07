@@ -1,7 +1,19 @@
+import Head from 'next/head';
 import Layout from '../../components/layout';
+import utilStyles from '../../styles/utils.module.css';
 
-export default function Post() {
-  return <Layout>...</Layout>;
+export default function Post({ post }) {
+  return (
+    <Layout>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <article>
+        <h1 className={utilStyles.headingXl}>{post.title}</h1>
+        <div>{post.body}</div>
+      </article>
+    </Layout>
+  );
 }
 
 export async function getStaticPaths() {
