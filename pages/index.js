@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 
@@ -15,9 +16,9 @@ function Home({ posts }) {
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {posts.map(({ id, title, body }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-            </li>
+            <Link href={`/posts/${id}`} key={id}>
+              <li className={utilStyles.listItem}>{title}</li>
+            </Link>
           ))}
         </ul>
       </section>
@@ -33,7 +34,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts: data,
+      posts: data.slice(0, 5),
     },
   };
 }
